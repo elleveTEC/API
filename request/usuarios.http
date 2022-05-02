@@ -1,0 +1,54 @@
+@api = http://localhost:3000/usuarios
+@api1 = http://localhost:3000/registros
+@api2 = http://localhost:3000/diccionario
+### Get all users no admins
+GET {{api}}
+
+### Post a new user
+POST {{api}}
+Content-Type: application/json
+
+{
+    "Nombre": "Luis",
+    "Apellido": "Molina",
+    "Correo": "A01283586@tec.mx",
+    "Contrasena": "12345789",
+    "Puesto": "Estudiante", 
+    "Rol": true
+}
+
+### Get an specific user
+GET {{api}}/18
+
+### Delete an specific user
+DELETE {{api}}/21
+
+### Update usuario
+PUT {{api}}/18
+Content-Type: application/json
+
+{
+    "Contrasena": "123456"
+}
+
+### Get registros usuario especifico
+GET {{api1}}/18
+
+### Post a new registro
+POST {{api1}}
+Content-Type: application/json
+
+{
+    "UsuarioID": 18,
+    "Fecha_Calculo": "2021-01-01",
+    "Fecha_Inicio": "2021-03-01",
+    "Fecha_Fin": "2021-03-09",
+    "Nombre_Actividad": "Actividad 2",
+    "Descripcion": "zwesxdrcftvgybhunijmok vctybuin",
+    "Resumen": "ubinjomkp asff",
+    "Dias": 5
+}
+
+
+### Get all words from diccionario
+GET {{api2}}
