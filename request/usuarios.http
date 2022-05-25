@@ -1,45 +1,52 @@
-@api = http://localhost:3000/usuarios
-@api1 = http://localhost:3000/registros
 @api2 = http://localhost:3000/diccionario
 ### Get all users no admins
-GET {{api}}
+GET http://localhost:3000/getUsersNoAdmin
 
 ### Post a new user
-POST {{api}}
+POST http://localhost:3000/createUser
 Content-Type: application/json
 
 {
-    "Nombre": "Luis",
-    "Apellido": "Molina",
-    "Correo": "A01283586@tec.mx",
-    "Contrasena": "12345789",
-    "Puesto": "Estudiante", 
-    "Rol": false
+    "Nombre": "Erick",
+    "Apellido": "Gomez",
+    "Correo": "A01412169@tec.mx",
+    "Contrasena": "1234",
+    "Puesto": "Admin", 
+    "Rol": true
 }
 
-### Get an specific user
-GET {{api}}/2
-
-### Delete an specific user
-DELETE {{api}}/23
-
-### Update usuario
-PUT {{api}}/18
+### Get an specific user to login
+POST http://localhost:3000/postUserLogin
 Content-Type: application/json
 
 {
+    "Correo": "A01283642@tec.mx",
     "Contrasena": "123457"
 }
 
-### Get registros usuario especifico
-GET {{api1}}/18
+### Get an specific user by id 
+GET http://localhost:3000/getUserByID/1
 
-### Post a new registro
-POST {{api1}}
+### Delete an specific user by id 
+DELETE http://localhost:3000/deleteUserByID/7
+
+### Update user by id
+PUT http://localhost:3000/updateUserByID/7
 Content-Type: application/json
 
 {
-    "UsuarioID": 18,
+    "Contrasena": "1234579"
+}
+
+### Get registros usuario especifico
+GET http://localhost:3000/getRecordUser/2
+
+### Post a new registro
+POST http://localhost:3000/createRecord
+Content-Type: application/json
+
+{
+    "UsuarioID": 2,
     "Fecha_Calculo": "2021-01-01",
     "Fecha_Inicio": "2021-03-01",
     "Fecha_Fin": "2021-03-09",
