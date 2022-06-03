@@ -16,6 +16,7 @@ export const getRecordUser = async (req, res) => {
 };
 
 export const createRecord = async (req, res) => {
+
     const {UsuarioID, Fecha_Calculo, Fecha_Inicio, Fecha_Fin, Nombre_Actividad, Descripcion, Resumen, Dias} = req.body
 
     if (UsuarioID == null || Fecha_Calculo == null || Fecha_Inicio == null || Fecha_Fin == null || Nombre_Actividad == null || Descripcion == null || Resumen == null || Dias == null){
@@ -35,6 +36,7 @@ export const createRecord = async (req, res) => {
             .query(queries.createRegistro);
         res.json({UsuarioID, Fecha_Calculo, Fecha_Inicio, Fecha_Fin, Nombre_Actividad, Descripcion, Resumen, Dias});
     } catch (error) {
+        console.error(error);
         res.status(500);
         res.send(error.message);
     }

@@ -102,7 +102,11 @@ export const postUserLogin = async (req, res) => {
             .input('contrasena', sql.NVarChar, Contrasena)
             .query(queries.postUsuarioLogin);
 
-        res.json(result.recordset);
+        if (result.recordset.length > 0) {
+            res.json(result.recordset);
+            return;
+        }
+        res.status(302).send('Incorrect user or password');
     } catch (error) {
         res.status(500);
         res.send(error.message);

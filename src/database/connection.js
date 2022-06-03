@@ -12,11 +12,23 @@ const dbSettings = {
     },
 }
 
+const dbSettings2 = {
+    user: "SA",
+    password: "Ingeniero2001.",
+    database: "CEMEX",
+    server: "localhost", // localhost
+    port: 1433,
+    options: {
+        encrypt: true,
+        trustServerCertificate: true,
+    },
+}
+
 export async function getConnection(){
     try {
-        const pool = await sql.connect(dbSettings)
+        const pool = await sql.connect(dbSettings2)
         return pool; 
-    } catch {
+    } catch(error) {
         console.error(error);
     }
 }
