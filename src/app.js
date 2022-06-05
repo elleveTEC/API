@@ -1,7 +1,7 @@
 import express from 'express'
 import config from './config'
 import usuariosRoutes from './routes/usuarios.routes'
-import diccionarioRoutes from './routes/diccionario.routes'
+import modeloRoutes from './routes/modelo.routes'
 import registroRoutes from './routes/registros.routes'
 
 const app = express();
@@ -16,7 +16,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(morgan('dev'));
 
 app.use(usuariosRoutes);
-app.use(diccionarioRoutes);
+app.use(modeloRoutes);
 app.use(registroRoutes);
 
 export default app

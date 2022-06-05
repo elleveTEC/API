@@ -26,7 +26,7 @@ const dbSettings2 = {
 
 export async function getConnection(){
     try {
-        const pool = await sql.connect(dbSettings2)
+        const pool = await sql.connect(dbSettings)
         return pool; 
     } catch(error) {
         console.error(error);

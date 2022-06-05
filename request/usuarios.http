@@ -1,4 +1,4 @@
-@api2 = http://localhost:3000/diccionario
+@api2 = http://localhost:5000/diccionario
 ### Get all users no admins
 GET http://localhost:3000/getUsersNoAdmin
 
