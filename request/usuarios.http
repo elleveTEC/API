@@ -7,12 +7,11 @@ POST http://localhost:3000/createUser
 Content-Type: application/json
 
 {
-    "Nombre": "Erick",
-    "Apellido": "Gomez",
-    "Correo": "A01412169@tec.mx",
-    "Contrasena": "1234",
-    "Puesto": "Admin", 
-    "Rol": true
+    "Nombre": "Carlos",
+    "Apellido": "Salinas",
+    "Correo": "A01283585@tec.mx",
+    "Contrasena": "12345",
+    "Puesto": "Documentacion"
 }
 
 ### Get an specific user to login
@@ -30,12 +29,12 @@ GET http://localhost:3000/getUserByID/1
 ### Delete an specific user by id 
 DELETE http://localhost:3000/deleteUserByID/7
 
-### Update user by id
-PUT http://localhost:3000/updateUserByID/7
+### Update user by email and password
+PUT http://localhost:3000/updateUserByID/A01283642@tec.mx/123457
 Content-Type: application/json
 
 {
-    "Contrasena": "1234579"
+    "NuevaContrasena": "1234579"
 }
 
 ### Get registros usuario especifico

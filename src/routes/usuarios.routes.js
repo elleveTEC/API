@@ -1,5 +1,5 @@
 import {Router} from 'express'
-import {createUser, deleteUserByID, getUserByID, getUserNoAdmin, postUserLogin, updateUserByID} from '../controllers/usuarios.controller'
+import {createUser, deleteUserByID, getUserByID, getUserNoAdmin, postUserLogin, updateUser} from '../controllers/usuarios.controller'
 
 const router = Router()
 
@@ -13,6 +13,6 @@ router.get('/getUserByID/:UsuarioID', getUserByID)
 
 router.delete('/deleteUserByID/:UsuarioID', deleteUserByID)
 
-router.put('/updateUserByID/:UsuarioID', updateUserByID)
+router.put('/updateUserByID/:Correo/:Contrasena', updateUser)
 
 export default router
