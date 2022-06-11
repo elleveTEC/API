@@ -13,9 +13,9 @@ export const getUserNoAdmin = async (req, res) => {
 
 export const createUser = async (req, res) => {
     // En caso de que puesto no sea obligatorio, establecer como let en lugar de const
-    const {Nombre, Apellido, Correo, Contrasena, Puesto, Rol} = req.body
+    const {Nombre, Apellido, Correo, Contrasena, Puesto} = req.body
 
-    if (Nombre == null || Apellido == null || Correo == null || Contrasena == null || Puesto == null || Rol == null){
+    if (Nombre == null || Apellido == null || Correo == null || Contrasena == null || Puesto == null){
         return res.status(400).json({msg: 'Faltan campos por llenar'})
     }
 
@@ -27,9 +27,8 @@ export const createUser = async (req, res) => {
             .input('correo', sql.NVarChar, Correo)
             .input('contrasena', sql.NVarChar, Contrasena)
             .input('puesto', sql.NVarChar, Puesto)
-            .input('rol', sql.Bit, Rol)
             .query(queries.createUsuario);
-        res.json({Nombre, Apellido, Correo, Contrasena, Puesto, Rol});
+        res.json({Nombre, Apellido, Correo, Contrasena, Puesto});
     } catch (error) {
         res.status(500);
         res.send(error.message);
@@ -67,19 +66,20 @@ export const deleteUserByID = async (req, res) => {
     }
 };
 
-export const updateUserByID = async (req, res) => {
-    const {Contrasena} = req.body;
-    const {UsuarioID} = req.params;
+export const updateUser = async (req, res) => {
+    const {NuevaContrasena} = req.body;
+    const {Correo, Contrasena} = req.params;
 
-    if (Contrasena == null){
+    if (NuevaContrasena == null){
         return res.status(400).json({msg: 'Faltan campos por llenar'})
     }
 
     try {
         const pool = await getConnection();
         await pool.request()
-            .input('usuarioID', sql.NVarChar, UsuarioID)
+            .input('usuarioID', sql.NVarChar, Correo)
             .input('contrasena', sql.NVarChar, Contrasena)
+            .input('contrasena', sql.NVarChar, NuevaContrasena)
             .query(queries.updateUsuario);
 
         res.json({UsuarioID});
