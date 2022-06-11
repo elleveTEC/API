@@ -6,7 +6,7 @@ export const getPalabras = async (req, res) => {
     try {
         const pool = await getConnection(); 
         const result = await pool.request().query(queries.getPalabras);
-        res.send(result.recordset); 
+        res.send(result.recordset);
     } catch (error) {
         res.status(500);
         res.send(error.message);
@@ -14,7 +14,7 @@ export const getPalabras = async (req, res) => {
 };
 
 export const getPredict = async (req, res) => {
-    const {Sum, Desc, Dict} = req.body;
+    const {Sum, Desc} = req.body;
     var modelo = null;
     var dict = new Map();
     const del_words = ['in', 'the', 'a','to', 'from', 'be', 'on', 'an', 'as', 'of', 'is', 'it', 'that', 'this', 'or', 'and', 'I', 'he', 'she', 'they', 'them', 'us'];
@@ -22,8 +22,6 @@ export const getPredict = async (req, res) => {
     (async () => {
         modelo = await tf.loadLayersModel("http://127.0.0.1:8080/model.json");
     })();
-    console.log(Sum);
-    console.log(Desc);
 
     async function doPredict() {
         try {
