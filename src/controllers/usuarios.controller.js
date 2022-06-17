@@ -81,8 +81,7 @@ export const updateUser = async (req, res) => {
             .input('contrasena', sql.NVarChar, Contrasena)
             .input('nuevacontrasena', sql.NVarChar, NuevaContrasena)
             .query(queries.updateUsuario);
-
-        res.send("Contraseña actualizada");
+        res.json({Contrasena});
     } catch (error) {
         res.status(500);
         res.send(error.message);
