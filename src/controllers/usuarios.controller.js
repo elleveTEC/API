@@ -77,12 +77,12 @@ export const updateUser = async (req, res) => {
     try {
         const pool = await getConnection();
         await pool.request()
-            .input('usuarioID', sql.NVarChar, Correo)
+            .input('correo', sql.NVarChar, Correo)
             .input('contrasena', sql.NVarChar, Contrasena)
-            .input('contrasena', sql.NVarChar, NuevaContrasena)
+            .input('nuevacontrasena', sql.NVarChar, NuevaContrasena)
             .query(queries.updateUsuario);
 
-        res.json({UsuarioID});
+        res.send("Contraseña actualizada");
     } catch (error) {
         res.status(500);
         res.send(error.message);

@@ -29,9 +29,9 @@ export const createRecord = async (req, res) => {
             .input('fechaCalculo', sql.Date, Fecha_Calculo)
             .input('fechaInicio', sql.Date, Fecha_Inicio)
             .input('fechaFin', sql.Date, Fecha_Fin)
-            .input('nombreActividad', sql.NVarChar(50), Nombre_Actividad)
-            .input('descripcion', sql.NVarChar(500), Descripcion)
-            .input('resumen', sql.NVarChar(50), Resumen)
+            .input('nombreActividad', sql.VarChar(8000), Nombre_Actividad)
+            .input('descripcion', sql.VarChar(8000), Descripcion)
+            .input('resumen', sql.VarChar(8000), Resumen)
             .input('dias', sql.Int, Dias)
             .query(queries.createRegistro);
         res.json({UsuarioID, Fecha_Calculo, Fecha_Inicio, Fecha_Fin, Nombre_Actividad, Descripcion, Resumen, Dias});
